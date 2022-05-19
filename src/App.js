@@ -30,13 +30,17 @@ const issueCredential = () => {
 
   const demoIssuer = new SeraphIDIssuer(configs.GOVERNMENT_SCRIPT_HASH, configs.NEO_RPC_URL, configs.DID_NETWORK, configs.MAGIC)
   const ownerDID = localStorage.getItem('ownerDID');
-
+  console.log("using ownerDID", ownerDID)
   const claimID = uuidv4();
   const newClaim = demoIssuer.createClaim(claimID, configs.PASSPORT_SCHEMA_NAME,
       {
           'idNumber': 'J12393496',
-          'firstName': "my first name",
-          'secondName': "my second name",
+          'address': "london",
+          'birthDate': "01.01.1940",
+          'citizenship': "london",
+          'firstName': "Oliver",
+          'gender': "male",
+          'secondName': "d"
       }, ownerDID ? ownerDID : '');
 
   console.log('new created Claim', newClaim);
